@@ -1,0 +1,81 @@
+@import "tailwindcss";
+/* @plugin "daisyui"; */
+
+/* Base button style */
+.btn {
+  @apply inline-flex items-center justify-center rounded-md font-medium transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer;
+}
+
+/* Primary button */
+.btn-primary {
+  @apply bg-indigo-600 text-white px-4 py-2 shadow hover:bg-indigo-700 focus:ring-indigo-500;
+}
+
+/* Secondary button */
+.btn-secondary {
+  @apply bg-gray-200 text-gray-700 px-4 py-2 shadow hover:bg-gray-300 focus:ring-gray-400;
+}
+
+/* Outline button */
+.btn-outline {
+  @apply border border-gray-300 text-gray-700 px-4 py-2 hover:bg-gray-100 focus:ring-gray-300;
+}
+
+/* Small button */
+.btn-sm {
+  @apply px-2 py-1 text-sm;
+}
+
+/* Large button */
+.btn-lg {
+  @apply px-6 py-3 text-lg;
+}
+
+
+/* Disabled button */
+.btn-disabled {
+  @apply opacity-50 cursor-not-allowed pointer-events-none;
+}
+
+/* Success button */
+.btn-success {
+  @apply bg-green-600 text-white px-4 py-2 shadow hover:bg-green-700 focus:ring-green-500;
+}
+
+/* Danger button */
+.btn-danger {
+  @apply bg-red-600 text-white px-4 py-2 shadow hover:bg-red-700 focus:ring-red-500;
+}
+
+/* Ghost button - subtle style, usually for inline actions */
+.btn-ghost {
+  @apply bg-transparent text-indigo-600 border border-transparent hover:bg-indigo-50 hover:text-indigo-700 focus:ring-indigo-500;
+}
+
+/* Link button - looks like a text link with interactive states */
+.btn-link {
+  @apply bg-transparent text-indigo-600 hover:underline focus:underline;
+}
+
+/* Button group (for adjacent buttons with shared borders) */
+.btn-group>.btn {
+  @apply rounded-none;
+}
+
+.btn-group>.btn:first-child {
+  @apply rounded-l-md;
+}
+
+.btn-group>.btn:last-child {
+  @apply rounded-r-md;
+}
+
+
+
+.form-row {
+  @apply md:flex md:justify-between gap-4
+}
+
+.form-row .form-group.col-md-6  {
+  width: 50%;
+}

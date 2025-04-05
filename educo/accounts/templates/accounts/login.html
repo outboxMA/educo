@@ -1,0 +1,91 @@
+{% load django_vite %}
+{% load tailwind_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% vite_hmr_client %}
+    {% vite_asset 'static/js/main.js' %}
+    
+    <!-- Include tsparticles CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.0.0/tsparticles.bundle.min.js"></script>
+</head>
+<body class="w-screen h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800 relative">
+
+    <!-- particles container -->
+    <div id="particles-js" class="absolute top-0 left-0 w-full h-full"></div>
+
+    <!-- Login Box -->
+    <div class="relative z-10 w-full max-w-md bg-white rounded-3xl shadow-xl p-8">
+        <div class="text-center mb-6">
+            <h1 class="text-4xl font-extrabold text-indigo-600">Educo</h1>
+            <p class="text-lg text-gray-500">Please login to your account</p>
+        </div>
+        
+        <form method="POST" action="/accounts/login/" class="space-y-4">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                {{ form|crispy }}
+            </div>
+            
+            <button type="submit" class="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scle-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                Login
+            </button>
+        </form>
+    </div>
+
+    <!-- Initialize particles -->
+    <script>
+        tsParticles.load("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 100,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "size": {
+                    "value": 4
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out"
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "opacity": {
+                    "value": 0.6,
+                    "random": true
+                }
+            },
+            "interactivity": {
+                "detect_on": "window",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

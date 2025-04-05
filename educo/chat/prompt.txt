@@ -1,0 +1,78 @@
+"Generate a JSON response containing a structured set of multiple-choice questions on the topic: '{topic}'. The JSON should follow this exact format:
+
+json
+Copier
+Modifier
+{
+  "topic": "{topic}",
+  "questions": [
+    {
+      "question": "Provide a fundamental question related to {topic}.",
+      "difficulty": "Easy",
+      "choices": [
+        "A. Correct answer",
+        "B. Incorrect answer",
+        "C. Incorrect answer",
+        "D. Incorrect answer"
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Provide a conceptual question related to {topic}.",
+      "difficulty": "Easy",
+      "choices": [
+        "A. Correct answer",
+        "B. Incorrect answer",
+        "C. Incorrect answer",
+        "D. Incorrect answer"
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Provide a calculation-based question related to {topic}.",
+      "difficulty": "Medium",
+      "choices": [
+        "A. Correct answer",
+        "B. Incorrect answer",
+        "C. Incorrect answer",
+        "D. Incorrect answer"
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Provide a real-world application question related to {topic}.",
+      "difficulty": "Medium",
+      "choices": [
+        "A. Correct answer",
+        "B. Incorrect answer",
+        "C. Incorrect answer",
+        "D. Incorrect answer"
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Provide an advanced theoretical question related to {topic}.",
+      "difficulty": "Hard",
+      "choices": [
+        "A. Correct answer",
+        "B. Incorrect answer",
+        "C. Incorrect answer",
+        "D. Incorrect answer"
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Provide a probability or statistics-based question related to {topic}.",
+      "difficulty": "Hard",
+      "choices": [
+        "A. Correct answer",
+        "B. Incorrect answer",
+        "C. Incorrect answer",
+        "D. Incorrect answer"
+      ],
+      "answer": "A"
+    }
+  ]
+}
+Ensure the JSON is well-formatted, with meaningful questions, accurate multiple-choice answers, and a correct answer clearly indicated. The questions should cover theoretical concepts, calculations, applications, and real-world scenarios."
+Also give just the json response, without explaination without anything other then the json, with even this ```json  ....  ``` pattern.

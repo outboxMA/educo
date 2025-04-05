@@ -1,0 +1,4 @@
+.venv/
+educo/staticfiles/
+educo/node_modules/
+educo.rar

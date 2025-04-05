@@ -1,0 +1,21 @@
+<!-- students/enrollment_list.html -->
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Enrollments for {{ student.first_name }} {{ student.last_name }}</h1>
+  <ul>
+    {% for enrollment in enrollments %}
+      <li>
+        {{ enrollment.course.title }} - {{ enrollment.status }}
+        - <a href="{% url 'students:enrollment_edit' enrollment.id %}">Edit</a>
+        - <a href="{% url 'students:enrollment_delete' enrollment.id %}">Delete</a>
+      </li>
+    {% empty %}
+      <li>No enrollments found.</li>
+    {% endfor %}
+  </ul>
+  <br>
+  <a href="{% url 'students:enrollment_create' student.id %}">Enroll in New Course</a>
+  <br>
+  <a href="{% url 'students:student_list' %}">Back to Student List</a>
+{% endblock %}

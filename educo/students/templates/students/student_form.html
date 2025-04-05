@@ -1,0 +1,20 @@
+{% extends request.htmx|yesno:'base_htmx.html,base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+        {% if student %}
+            Edit Student: {{ student.first_name }} {{ student.last_name }}
+        {% else %}
+            Create New Student
+        {% endif %}
+    </h2>
+
+    <div method="POST" class="bg-white p-6 rounded-lg shadow-lg space-y-4">
+        {% crispy form %}
+    </div>
+
+
+
+{% endblock %}

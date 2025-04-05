@@ -1,0 +1,13 @@
+<!-- students/enrollment_form.html -->
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{% if enrollment %}Edit {% else %}Create New {% endif %} Enrollment</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if enrollment %}Update {% else %}Create {% endif %} Enrollment</button>
+  </form>
+  <br>
+  <a href="{% url 'students:student_list' %}">Back to Student List</a>
+{% endblock %}

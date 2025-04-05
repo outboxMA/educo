@@ -1,0 +1,37 @@
+{% load django_vite %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formation Center Dashboard</title>
+  <meta name="description" content="Formation Center Dashboard" />
+  <meta name="author" content="Educo" />
+  <meta name="keywords" content="formation, center, dashboard, management" />
+  {% vite_hmr_client %}
+  {% vite_asset 'static/js/main.js' %}
+  <!-- <script src="https://unpkg.com/htmx-ext-preload@2.1.0" integrity="sha384-fkzubQiTB69M7XTToqW6tplvxAOJkqPl5JmLAbumV2EacmuJb8xEP9KnJafk/rg8" crossorigin="anonymous"></script>  -->
+</head>
+<body class="bg-gray-100" hx-ext="preload" >
+
+  <div x-data="{ sidebarOpen: true }" class="flex h-screen">
+  
+    <!-- Sidebar -->
+    {% include 'partials/sidebar.html' %}
+
+    <!-- Main Content -->
+    <div class="flex flex-col flex-1 overflow-hidden">
+      <!-- TopBar -->
+      {% include 'partials/header.html' %}
+
+      <!-- Main content section -->
+      <main class="flex-1 overflow-y-auto p-4 md:p-6" id="content">
+        {% block content %}
+        <!-- Content will be injected here from home.html or other templates -->
+        {% endblock %}
+      </main>
+    </div>
+  </div>
+
+</body>
+</html>

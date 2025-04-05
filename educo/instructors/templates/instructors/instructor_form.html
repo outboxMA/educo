@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load tailwind_filters %}
+
+{% block content %}
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">{{ form.instance.pk|yesno:"Edit,Add" }} Instructor</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded-lg">Save</button>
+    </form>
+{% endblock %}

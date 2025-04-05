@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load tailwind_filters %}
+
+{% block content %}
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Edit Course: {{ course.title }}</h2>
+
+    <!-- Course Form -->
+    <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+        <h3 class="text-xl font-semibold mb-4">Edit Course</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ course_form|crispy }}
+            <button type="submit" name="save_course" class="btn btn-success w-full mt-2 text-sm">Save Course Changes</button>
+        </form>
+    </div>
+
+    <!-- Session Form -->
+    <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+        <h3 class="text-xl font-semibold mb-4">Add New Session</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ session_form|crispy }}
+            <button type="submit" name="add_session" class="btn btn-primary w-full mt-2 text-sm">Add Session</button>
+        </form>
+    </div>
+
+    <!-- Sessions List -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Sessions for {{ course.title }}</h3>
+        <table class="min-w-full table-auto">
+            <thead>
+                <tr class="text-left">
+                    <th class="px-4 py-2">Session Title</th>
+                    <th class="px-4 py-2">Session Date</th>
+                    <th class="px-4 py-2">Location</th>
+                    <th class="px-4 py-2">Is Online?</th>
+                    <th class="px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for session in sessions %}
+                <tr class="bg-gray-100">
+                    <td class="px-4 py-2">{{ session.session_title }}</td>
+                    <td class="px-4 py-2">{{ session.session_date }}</td>
+                    <td class="px-4 py-2">{{ session.location }}</td>
+                    <td class="px-4 py-2">{{ session.is_online|yesno:"Yes,No" }}</td>
+                    <td class="px-4 py-2">
+                        <a href="{% url 'courses:edit_session' session.id %}" class="text-blue-600 hover:text-blue-800">Edit</a> |
+                        <a href="{% url 'courses:delete_session' session.id %}" class="text-red-600 hover:text-red-800">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="px-4 py-2 text-center text-gray-600">No sessions found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

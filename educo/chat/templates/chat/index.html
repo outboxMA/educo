@@ -1,0 +1,42 @@
+{% load tailwind_filters %}
+{% load markdown_extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic Summary Generator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.4/dist/tailwind.min.css">
+</head>
+<body>
+    <div class="container mx-auto mt-10">
+        <h1 class="text-2xl font-bold mb-4">Generate a Summary for a Topic</h1>
+        <form method="get" action="/chat/call/">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded mt-4">Generate Summary</button>
+        </form>
+    </div>
+
+    <div id="md">
+        <!-- Render the Markdown content -->
+        <div class="prose lg:prose-xl">
+            {{ markdown_content|safe }}
+        </div>
+        <style>
+            #md h1 {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+        </style>
+    </div>
+
+    {% if response %}
+        <div class="mt-6">
+            <h2 class="font-semibold">Generated Summary:</h2>
+            <div class="text-green-500">{{ response }}</div>
+        </div>
+    {% endif %}
+</body>
+</html>
